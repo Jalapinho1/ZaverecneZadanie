@@ -1,5 +1,17 @@
+<?php
+session_start();
+
+$lang = "sk";
+if(isset($_GET['lang'])){
+    $lang = $_GET['lang'];
+}
+if (strcmp($lang,"sk") != 0 && strcmp($lang,"en") != 0){
+    $lang = "sk";
+}
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $lang;?>">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -23,16 +35,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.es6.js" charset="UTF-8"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark justify-content-between navbar-expand-lg">
-    <a class="navbar-brand" href="#">Zaverecny projekt</a>
-</nav>
-<div class="row mt-5">
-<!--    <div class="col sm-2" id="generators"></div>-->
-    <div class="col" id="result"></div>
-</div>
+<?php include $lang.'/navbar.php'?>
 
 <script src="myscript.js"></script>
 
