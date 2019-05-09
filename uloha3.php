@@ -1,4 +1,28 @@
 <?php
+session_start();
+header('Cache-control: private'); // IE 6 FIX
+
+if(isSet($_GET['lang'])) {
+    $lang = $_GET['lang'];
+// register the session and set the cookie
+    $_SESSION['lang'] = $lang;
+} else if(isSet($_SESSION['lang'])) {
+    $lang = $_SESSION['lang'];
+} else {
+    $lang = 'sk';
+}
+
+switch ($lang) {
+    case 'en':
+        $lang_file = 'lang_en.php';
+        break;
+    case 'sk':
+        $lang_file = 'lang_sk.php';
+        break;
+    default:
+        $lang_file = 'lang_sk.php';
+}
+include_once 'lang/'.$lang_file;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +52,7 @@
 
 </head>
 <body>
-<?php include 'sk/navbar.php'?>
+<?php include 'navbar.php' ?>
 
 <script src="myscript.js"></script>
 

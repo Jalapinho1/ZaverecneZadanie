@@ -1,12 +1,27 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Eduardo Martinez
+ * Date: 9. 3. 2019
+ * Time: 19:10
+ */
+
+// Initialize the session
 session_start();
+
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: uloha2.php");
+    exit;
+}
+
 header('Cache-control: private'); // IE 6 FIX
 
-if(isSet($_GET['lang'])) {
+if (isSet($_GET['lang'])) {
     $lang = $_GET['lang'];
 // register the session and set the cookie
     $_SESSION['lang'] = $lang;
-} else if(isSet($_SESSION['lang'])) {
+} else if (isSet($_SESSION['lang'])) {
     $lang = $_SESSION['lang'];
 } else {
     $lang = 'sk';
@@ -22,13 +37,16 @@ switch ($lang) {
     default:
         $lang_file = 'lang_sk.php';
 }
-include_once 'lang/'.$lang_file;
+include_once 'lang/' . $lang_file;
+
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Team view</title>
+
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <!--    <link rel="stylesheet" type="text/css" href="style.css">-->
     <meta charset="utf-8">
@@ -54,30 +72,9 @@ include_once 'lang/'.$lang_file;
 <body>
 <?php include 'navbar.php' ?>
 <div class="container">
-    <form class="w-75 p-3 mb-5 mt-5 mx-auto shadow p-3 mb-5 bg-white rounded" id="loginForm" style="background-color: rgba(0,0,0,.05) !important;">
-        <h5 class="mb-3 text-center"><?php echo $lang['FORM_HEADER'];?></h5>
-        <div class="form-row">
-            <div class="form-group col">
-                <input type="text" name="login" class="form-control" placeholder="<?php echo $lang['FORM_NAME'];?>" required>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col">
-                <input type="password" name="password" class="form-control" placeholder="<?php echo $lang['FORM_PASSW'];?>" required>
-            </div>
-        </div>
+    <h2 class="mt-4">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to team view.</h2>
+    <a href="logout.php" class="btn btn-danger mt-2">Sign Out of Your Account</a>
 
-        <div class="form-row">
-            <div class="form-group col">
-                <button type="button" class="btn btn-primary" onclick="submitForm('ldaplogin.php')"><?php echo $lang['FORM_LOGIN'];?></button>
-            </div>
-        </div>
-    </form>
-    <div id="success"  class="mx-auto text-danger" style="width: 300px;" ></div>
-    <div class="mt-5 mx-auto" style="width: 200px;" >
-    </div>
 </div>
-<script src="myscript.js"></script>
-
 </body>
 </html>
