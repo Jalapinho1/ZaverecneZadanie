@@ -58,3 +58,4 @@ include_once 'lang/'.$lang_file;
 <script src="myscript.js"></script>
 </body>
 </html>
+//change git after cloning
