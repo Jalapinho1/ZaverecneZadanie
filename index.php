@@ -11,7 +11,7 @@ if(isSet($_GET['lang'])) {
 } else {
     $lang = 'sk';
 }
-
+$langtmp = $lang;
 switch ($lang) {
     case 'en':
         $lang_file = 'lang_en.php';
@@ -25,7 +25,7 @@ switch ($lang) {
 include_once 'lang/'.$lang_file;
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo $lang;?>">
+<html lang="<?php echo $langtmp;?>">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -58,4 +58,3 @@ include_once 'lang/'.$lang_file;
 <script src="myscript.js"></script>
 </body>
 </html>
-//change git after cloning

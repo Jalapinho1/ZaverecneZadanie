@@ -24,7 +24,18 @@ $lang['MENU_5'] = 'English';
 $lang['MENU_Dropdown'] = 'Language';
 
 //Forms
+
 $lang['FORM_HEADER'] = 'Login';
+$lang['FORM_ADMIN_HEADER'] = 'CSV import';
 $lang['FORM_NAME'] = 'Name';
 $lang['FORM_PASSW'] = 'Password';
 $lang['FORM_LOGIN'] = 'Login';
+$lang['FORM_ADMLOGIN'] = 'Login as admin';
+$lang['FORM_FILE_LABEL'] = 'CSV File';
+$lang['FORM_FILE_SEPARATOR'] = 'CSV File Separator';
+$lang['FORM_DBIMPORT'] = 'Import into DB';
+
+//Team view
+
+$lang['TEAM_MSG'] = 'Welcome to team view.';
+$lang['TEAM_LOGOUT'] = 'Sign Out of Your Account';

@@ -9,12 +9,18 @@
 session_start();
 
 // Unset all of the session variables
-$_SESSION = array();
+//$_SESSION = array();
 
 // Destroy the session.
-session_destroy();
+//session_destroy();
+
+//Unset all of the session variables for login, dont reset lang variables
+unset($_SESSION["loggedin"]);
+unset($_SESSION["username"]);
+unset($_SESSION["type"]);
 
 // Redirect to login page
+
 header("location: uloha2.php");
 exit;
 ?>

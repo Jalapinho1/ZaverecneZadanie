@@ -36,6 +36,8 @@ if(isset($_POST['login']) && isset($_POST['password'])) {
 
         $_SESSION["loggedin"] = true;
         $_SESSION["username"] = $login;
+        $_SESSION["type"] = 'student';
+
 //        insertPrihlasenie($name,$surname,$email,$login,$hash_pass);
         echo "teamview.php";
     } else {

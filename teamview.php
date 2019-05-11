@@ -26,6 +26,7 @@ if (isSet($_GET['lang'])) {
 } else {
     $lang = 'sk';
 }
+$langtmp = $lang;
 
 switch ($lang) {
     case 'en':
@@ -42,7 +43,7 @@ include_once 'lang/' . $lang_file;
 ?>
 
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="<?php echo $langtmp;?>">
 <head>
     <meta charset="utf-8">
     <title>Team view</title>
@@ -72,8 +73,26 @@ include_once 'lang/' . $lang_file;
 <body>
 <?php include 'navbar.php' ?>
 <div class="container">
-    <h2 class="mt-4">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to team view.</h2>
-    <a href="logout.php" class="btn btn-danger mt-2">Sign Out of Your Account</a>
+    <?php
+    $type = 0;
+    $loginname = $_SESSION["type"];
+     switch ($loginname){
+         case 'admin':
+             $type = 0;
+             break;
+         case 'student':
+             $type = 1;
+             break;
+         default:
+             $type = 0;
+     }
+
+     if ($type == 0){
+         include "teamStuff/admin.php";
+     }else{
+         include "teamStuff/student.php";
+     }
+    ?>
 
 </div>
 </body>

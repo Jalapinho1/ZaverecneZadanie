@@ -11,6 +11,7 @@ if(isSet($_GET['lang'])) {
 } else {
     $lang = 'sk';
 }
+$langtmp = $lang;
 
 switch ($lang) {
     case 'en':
@@ -25,7 +26,7 @@ switch ($lang) {
 include_once 'lang/'.$lang_file;
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $langtmp;?>">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
