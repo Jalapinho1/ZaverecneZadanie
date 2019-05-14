@@ -17,10 +17,10 @@ $getvariable = $matchFound ? trim ($_GET["lang"]) : '';
                 <a class="nav-link" href="https://147.175.121.210:4492/zavzadanie/index.php"><?php echo $lang['MENU_1']; ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://147.175.121.210:4492/zavzadanie/uloha2.php"><?php echo $lang['MENU_2']; ?></a>
+                <a class="nav-link" href="uloha2.php"><?php echo $lang['MENU_2']; ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://147.175.121.210:4492/zavzadanie/uloha3.php"><?php echo $lang['MENU_3']; ?></a>
+                <a class="nav-link" href="uloha3.php"><?php echo $lang['MENU_3']; ?></a>
             </li>
             <li class=" navbar-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
