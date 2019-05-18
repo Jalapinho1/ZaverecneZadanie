@@ -68,26 +68,73 @@ function pridajHeslo($vstup){
 }
 
 function nacitajSablonu($idSablony){
-    //sem vlozit vlkadanie sablon z datbazy
-    return "Dobrý deň,
-            na predmete Webové technológie 2 budete mať k dispozícii vlastný virtuálny linux server, ktorý budete
-            používať počas semestra, a na ktorom budete vypracovávať zadania. Prihlasovacie údaje k Vašemu serveru
-            su uvedené nižšie.
-            ip adresa: {{verejnaIP}}
-            prihlasovacie meno: {{login}}
-            heslo: {{heslo}}
-            Vaše web stránky budú dostupné na: http:// {{verejnaIP}}:{{http}}
-            S pozdravom,
-            {{sender}}";
+    $servername = "localhost";
+    $username = "xkocalka";
+    $password = "VvniA3fHVkt8";
+    $db = "prvadb";
+    $port = 8158;
+
+    $conn = mysqli_connect($servername, $username, $password, $db, $port);
+    mysqli_query($conn, "SET NAMES utf8");
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }else{
+        //echo "connected";
+    }
+
+    $template = "";
+    $sql = "SELECT emailContent FROM `EmailTemplate` WHERE emailId = '$idSablony'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $template = $row['emailContent'];
+            break;
+        }
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    return $template;
 }
 
 
-function pripravEmail($sablona,$hlavicka,$student){
+function pripravEmail($sablona,$hlavicka,$student, $sender){
     foreach ($hlavicka as $hlav){
        $premennaSablony =   "{{".$hlav."}}";
        $sablona =  str_replace($premennaSablony,$student[$hlav],$sablona);
     }
+    $premennaSablony =   "{{sender}}";
+    $sablona =  str_replace($premennaSablony,$sender,$sablona);
     return $sablona;
+}
+
+function databaseLog($idsablony,$hlavicka,$student, $subject){
+    $servername = "localhost";
+    $username = "xkocalka";
+    $password = "VvniA3fHVkt8";
+    $db = "prvadb";
+    $port = 8158;
+
+    $conn = mysqli_connect($servername, $username, $password, $db, $port);
+    mysqli_query($conn, "SET NAMES utf8");
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }else{
+        echo "<br>connected<br>";
+    }
+
+    foreach ($hlavicka as $hlav){
+        $premenna =  $hlav;
+        if($premenna == 'meno'){
+            $date = date("Y-m-d");
+            $sql = "INSERT INTO LogTable (datum, menoStudenta, predmetSpravy, idSablony) VALUES ('$date','$student[$premenna]', '$subject','$idsablony' )";
+            if ($conn->query($sql) === TRUE) {
+                echo "<br><br>successfully uploaded";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        }
+    }
+
 }
 
 /*
@@ -103,13 +150,16 @@ function vyberMail($nazov){
 }
 */
 
-function odosliEmail($adresa,$sprava){
+function odosliEmail($adresa,$sprava, $data ,$flag, $attachment = null, $idkwhat=null){
     echo"<br>";
     echo"<br>";
-    echo $adresa;
-    echo "funkcia zacala";
+    echo "funkcia zacala".$attachment.$idkwhat;
     echo"<br>";
     echo"<br>";
+
+    if(!isset($idkwhat)){
+        $attachment = null;
+    }
 
     $mail = new PHPMailer(true);
 try {
@@ -123,23 +173,55 @@ try {
     $mail->Port = 587;
     $mail->SMTPSecure = 'tls';
     $mail->SMTPAuth = true;
-    $mail->Username = "xmullerm";
-    $mail->Password = "MARtin1234dext";
-    $mail->setFrom('muller.martin65@stuba.sk', 'Your Name');
+    $mail->Username = $data[0];//"xkocalka";//"xmullerm";
+    $mail->Password = $data[2];//"L.n.a.n.i.127";//"MARtin1234dext";
+    $mail->setFrom(/*'muller.martin65@stuba.sk''xkocalka@stuba.sk'*/$data[1], $data[0]);
     $mail->addAddress($adresa, 'To');
 
-    $mail->Subject = "Subject"; //parameter
-    $mail->Body = $sprava;
+
+
+    if($flag == "html"){
+
+            $mail->Subject = $data[3];//"Subject"; //parameter
+            $mail->Body ="<div class=\"editor\" contenteditable><p>".$sprava."</p></div>";
+/* "<link rel=\"stylesheet\" href=\"css.css\">
+<a href=\"#\" data-command='h2'>H2</a>
+<a href=\"#\" data-command='undo'>a<i class='fa fa-undo'></i></a>
+<a href=\"#\" data-command='createlink'>b<i class='fa fa-link'></i></a>
+<a href=\"#\" data-command='justifyLeft'>c<i class='fa fa-align-left'></i></a>
+<a href=\"#\" data-command='superscript'>d<i class='fa fa-superscript'></i></a>
+<div class=\"fore-wrapper\"><i class='fa fa-font'>pal</i>
+  <div class=\"fore-palette\">
+  </div>
+</div>
+<script src=\"HtmlEditor.js\"></script>*/
+            if(isset($attachment)){
+                $mail->AddAttachment($attachment,
+                    $idkwhat);
+            }
+            $mail->IsHTML(true);
+
+    }else {
+        $mail->Subject = $data[3];//"Subject"; //parameter
+        $mail->Body = $sprava;
+        if(isset($attachment)){
+        $mail->AddAttachment($attachment,
+            $idkwhat);
+        }
+        $mail->IsHTML(false);
+    }
 
     if (!$mail->send()) {
         echo "Error sending message";
+        return false;
     } else {
         echo "Message sent!";
+        return true;
     }
 }catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    return false;
 
 }
-
 
 }

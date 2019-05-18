@@ -1,5 +1,6 @@
 <?php
 session_start();
+//echo "login ".$_SESSION['username'];
 include 'loadCSV.php';
 
 header('Cache-control: private'); // IE 6 FIX
@@ -52,9 +53,9 @@ include_once 'lang/'.$lang_file;
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.es6.js" charset="UTF-8"></script>
-
+    <script src="HtmlEditor.js"></script>
 </head>
-<body>
+<body onLoad="iFrame()">
 
 
 <?php
@@ -91,11 +92,45 @@ include 'navbar.php';
                 <label for="subor">Výber súboru pre ktorý sa majú rozposlať maily   </label>
                 <input type="file" name="subor2">
                 <br>
+                <input type="text" name="usr" placeholder="username">
+                <input type="email" name="mail" placeholder="example@stuba.sk">
+                <input type="password" name="pass" placeholder="TajneHeslo"><br>
+                <input type="text" name="subject" placeholder="Subject of email"><br><br>
+                <label>Attachment (optional)</label><br>
+                <input type="file" name="attachment"><br><br><br>
+
+                <div id="textEditor">
+
+                        <input type="button" id="bold" value="B" onclick="boldtt()">
+                        <input type="button" id="italic" value="I" onclick="italictt()">
+                        <input type="button" id="underline" value="U" onclick="underlinett()">
+                        <input type="button" id="fs" value="FontSize" onclick="fontsizett()">
+                        <input type="button" id="fc" value="FontColor" onclick="fontcolortt()">
+                        <input type="button" id="highlight" value="Highlight" onclick="highlighttt()">
+
+
+<br><br>
+                        <textarea id="textarea" name = "textarea" style="display: none;"></textarea>
+                        <iframe id="editor" name="editor" style="width: 500px; height: 400px;"></iframe>
+
+                    <br><br>
+
+
                 <input type="submit" class="btn btn-primary mb-2" value="Odoslať" name="submit2">
+                <input type="radio" name="emailType" value="plain" checked> Plain text
+                <input type="radio" name="emailType" value="html"> HTML email<br>
             </div>
         </form>
     </div>
 </div>
+
+<button onclick="show()" >Tabulka odoslanych emailov</button>
+<div id="results" style="display: none"></div>
+<script>
+    $.ajax({url: "databaseLog.php"}).done(function( msg ) {
+        $("#results").html(msg);
+    });
+</script>
 
 <?php
 error_reporting(E_ERROR | E_PARSE);
@@ -104,16 +139,42 @@ if(isset($_FILES["subor2"])){
     $nazovSuboru1 = $_FILES['subor2']['tmp_name'];
     $oddelovac = ';';
     $data = nacitaj($nazovSuboru1,$oddelovac);
-    $sablona = nacitajSablonu(1);
+    $sablona = nacitajSablonu(2);
+    $userData[0]=$_POST['usr'];
+    $userData[1]=$_POST['mail'];
+    $userData[2]=$_POST['pass'];
+    $userData[3]=$_POST['subject'];
 
-    foreach ($data as $x){
-        var_dump($x);
-        $sablonaUpravena = pripravEmail($sablona,$data[0],$x);
 
-        odosliEmail( $x['email'],$sablonaUpravena);
+    $flag = "plain";
+    if($_POST['emailType']=="plain") {
+        $flag = "plain";
+        // echo "this is html";
+    }else if($_POST['emailType']=="html"){
+        $flag = "html";
+        //echo "this is plain text";
     }
+
+
+    foreach ($data as $x) {
+        var_dump($x);
+        $sablonaUpravena = pripravEmail($sablona, $data[0], $x, $userData[0]);
+        if (isset($_FILES['attachment']) &&
+            $_FILES['attachment']['error'] == UPLOAD_ERR_OK) {
+            if(odosliEmail((String)$x['email'], $sablonaUpravena, $userData, $flag, $_FILES['attachment']['tmp_name'], $_FILES['attachment']['name'])){
+                databaseLog(2,$data[0], $x,$userData[3]);
+            }
+        }else{
+            if(odosliEmail((String)$x['email'], $sablonaUpravena, $userData, $flag)){
+                databaseLog(2,$data[0], $x,$userData[3]);
+            }
+        }
+    }
+
 }
 if(isset($_FILES["subor"])){
+
+
     $nazovSuboru1 = $_FILES['subor']['tmp_name'];
     $oddelovac = $_POST['oddelovac'];
     $data = nacitaj($nazovSuboru1,$oddelovac);
