@@ -38,3 +38,22 @@ $lang['FORM_DBIMPORT'] = 'Vlož do databázy';
 
 $lang['TEAM_MSG'] = 'Vitajte v tímovom prehľade.';
 $lang['TEAM_LOGOUT'] = 'Odhlásiť sa';
+
+//Generovanie hesiel + Odosielanie emailov
+$lang['Header1'] = "Generovanie hesiel žiakom";
+$lang['Label1'] = "Výber súboru pre ktorý sa majú vygenerovať heslá:";
+$lang['Oddelovac'] = "Voľba oddelovača";
+$lang['Potvrdenie1'] = "Potvrdiť";
+$lang['Header2'] = "Rozposielanie hesiel mailom";
+$lang['Label2'] = "Výber súboru pre ktorý sa majú rozposlať maily: ";
+$lang['PlaceHolder1'] = "Užívateľské meno";
+$lang['PlaceHolder2'] = "názov@stuba.sk";
+$lang['PlaceHolder3'] = "Heslo";
+$lang['PlaceHolder4'] = "Predmet emailu";
+$lang['Font'] = "Veľkosť písma";
+$lang['Farba'] = "Farba písma";
+$lang['Zvyraznenie'] = "Zvýraznenie";
+$lang['Odoslanie'] = "Odoslať";
+$lang['Text1'] = "Čistý text";
+$lang['Text2'] = "Formát HTML";
+$lang['Tabulka'] = "Tabulka odoslanych emailov";

@@ -39,3 +39,22 @@ $lang['FORM_DBIMPORT'] = 'Import into DB';
 
 $lang['TEAM_MSG'] = 'Welcome to team view.';
 $lang['TEAM_LOGOUT'] = 'Sign Out of Your Account';
+
+//Generovanie hesiel + Odosielanie emailov
+$lang['Header1'] = "Generating passwords for students";
+$lang['Label1'] = "Select a file to generate passwords for:";
+$lang['Oddelovac'] = "Choose delimeter";
+$lang['Potvrdenie1'] = "Confirm";
+$lang['Header2'] = "Sending emails to students";
+$lang['Label2'] = "Select a file to send emails";
+$lang['PlaceHolder1'] = "User name";
+$lang['PlaceHolder2'] = "example@stuba.sk";
+$lang['PlaceHolder3'] = "Password";
+$lang['PlaceHolder4'] = "Subject of email";
+$lang['Font'] = "Font size";
+$lang['Farba'] = "Font color";
+$lang['Zvyraznenie'] = "Highlight";
+$lang['Odoslanie'] = "Send";
+$lang['Text1'] = "Plain text";
+$lang['Text2'] = "HTML format";
+$lang['Tabulka'] = "Table of sent emails";

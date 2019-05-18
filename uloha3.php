@@ -34,7 +34,7 @@ include_once 'lang/'.$lang_file;
     <meta charset="UTF-8">
     <title>Title</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-      <link rel="stylesheet" type="text/css" href="styles.css">
+    <!--   <link rel="stylesheet" type="text/css" href="styles.css">-->
       <meta charset="utf-8">
 
       <script src="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
@@ -68,34 +68,35 @@ include 'navbar.php';
 //echo "ukladanie vystupu";
 //echo "<br>";
 ?>
-<div class="container" id="x1">
-    <div class="div1">
-        <h2>Generovanie hesiel žiakom</h2>
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-sm tab1">
+        <h2><?php echo $lang['Header1']; ?></h2>
 
      <form method="post" enctype = "multipart/form-data">
          <div class="form-group">
-           <label for="subor">Výber súboru pre ktorý sa majú vygenerovať heslá:   </label>
-            <input type="file" name="subor">
+           <label for="subor"><?php echo $lang['Label1']; ?></label>
+            <input type="file"  name="subor" >
              <br>
-             <label for="odelovac">Voľba oddelovača</label>
+             <label for="odelovac"><?php echo $lang['Oddelovac']; ?></label>
              <input type="text" name="oddelovac">
              <br>
-              <input type="submit" class="btn btn-primary mb-2" value="potvrdiť" name="submit">
+              <input type="submit" class="btn btn-primary mb-2" value="<?php echo $lang['Potvrdenie1'];?>" name="submit">
         </div>
      </form>
     </div>
 
-    <div class="div2">
-        <h2>Rozposielanie hesiel mailom</h2>
+    <div class="col-sm">
+        <h2><?php echo $lang['Header2']; ?></h2>
         <form method="post" enctype = "multipart/form-data">
             <div class="form-group">
-                <label for="subor">Výber súboru pre ktorý sa majú rozposlať maily   </label>
-                <input type="file" name="subor2">
+                <label for="subor"><?php echo $lang['Label2']; ?></label>
+                <input type="file" name="subor2" value="skuska">
                 <br>
-                <input type="text" name="usr" placeholder="username">
-                <input type="email" name="mail" placeholder="example@stuba.sk">
-                <input type="password" name="pass" placeholder="TajneHeslo"><br>
-                <input type="text" name="subject" placeholder="Subject of email"><br><br>
+                <input type="text" name="usr" placeholder="<?php echo $lang['PlaceHolder1']; ?>">
+                <input type="email" name="mail" placeholder="<?php echo $lang['PlaceHolder2']; ?>">
+                <input type="password" name="pass" placeholder="<?php echo $lang['PlaceHolder3']; ?>"><br>
+                <input type="text" name="subject" placeholder="<?php echo $lang['PlaceHolder4']; ?>"><br><br>
                 <label>Attachment (optional)</label><br>
                 <input type="file" name="attachment"><br><br><br>
 
@@ -104,9 +105,9 @@ include 'navbar.php';
                         <input type="button" id="bold" value="B" onclick="boldtt()">
                         <input type="button" id="italic" value="I" onclick="italictt()">
                         <input type="button" id="underline" value="U" onclick="underlinett()">
-                        <input type="button" id="fs" value="FontSize" onclick="fontsizett()">
-                        <input type="button" id="fc" value="FontColor" onclick="fontcolortt()">
-                        <input type="button" id="highlight" value="Highlight" onclick="highlighttt()">
+                        <input type="button" id="fs" value="<?php echo $lang['Font']; ?>" onclick="fontsizett()">
+                        <input type="button" id="fc" value="<?php echo $lang['Farba']; ?>" onclick="fontcolortt()">
+                        <input type="button" id="highlight" value="<?php echo $lang['Farba']; ?>" onclick="highlighttt()">
 
 
 <br><br>
@@ -116,16 +117,19 @@ include 'navbar.php';
                     <br><br>
 
 
-                <input type="submit" class="btn btn-primary mb-2" value="Odoslať" name="submit2">
-                <input type="radio" name="emailType" value="plain" checked> Plain text
-                <input type="radio" name="emailType" value="html"> HTML email<br>
+                <input type="submit" class="btn btn-primary mb-2" value="<?php echo $lang['Odoslanie']; ?>" name="submit2">
+                <input type="radio" name="emailType" value="plain" checked> <?php echo $lang['Text1']; ?>
+                <input type="radio" name="emailType" value="html"> <?php echo $lang['Text2']; ?><br>
+
+                    <button onclick="show()" ><?php echo $lang['Tabulka']; ?></button>
+                    <div id="results" style="display: none"></div>
             </div>
         </form>
     </div>
+    </div>
 </div>
 
-<button onclick="show()" >Tabulka odoslanych emailov</button>
-<div id="results" style="display: none"></div>
+
 <script>
     $.ajax({url: "databaseLog.php"}).done(function( msg ) {
         $("#results").html(msg);
