@@ -6,6 +6,12 @@ require 'phpMailer/Exception.php';
 require 'phpMailer/PHPMailer.php';
 require 'phpMailer/SMTP.php';
 
+/*if(isset($_POST['param'])){
+$param = $_POST['param'];
+$s=nacitajSablonu($param);
+echo $s;
+}*/
+
 function nacitaj($nazovSuboru,$oddelovac){
 
 
@@ -107,7 +113,7 @@ function pripravEmail($sablona,$hlavicka,$student, $sender){
     return $sablona;
 }
 
-function databaseLog($idsablony,$hlavicka,$student, $subject){
+function databaseLog($idsablony=0 ,$hlavicka,$student, $subject){
     $servername = "localhost";
     $username = "xkocalka";
     $password = "VvniA3fHVkt8";
@@ -126,6 +132,7 @@ function databaseLog($idsablony,$hlavicka,$student, $subject){
         $premenna =  $hlav;
         if($premenna == 'meno'){
             $date = date("Y-m-d");
+
             $sql = "INSERT INTO LogTable (datum, menoStudenta, predmetSpravy, idSablony) VALUES ('$date','$student[$premenna]', '$subject','$idsablony' )";
             if ($conn->query($sql) === TRUE) {
                 echo "<br><br>successfully uploaded";

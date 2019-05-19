@@ -15,7 +15,16 @@ function show() {
     }
 }
 
-function iFrame(){
+function allowSend() {
+    var x = document.getElementById("allowsend");
+
+
+        x.style.display = "block";
+
+
+}
+
+/*function iFrame(){
     editor.document.designMode='on';
 
 }
@@ -54,7 +63,7 @@ function linktt(){
 function unlinktt(){
 
     editor.document.execCommand('unlink', false, null);
-}
+}*/
 
 
 
