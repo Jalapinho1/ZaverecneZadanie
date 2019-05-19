@@ -78,51 +78,56 @@ include 'navbar.php';
 ?>
 
 
-<div class="container" id="x1">
-    <div class="div1">
-        <h2>Generovanie hesiel žiakom</h2>
+<div class="container-fluid" id="up1">
+    <div class="row">
+    <div class="col-sm">
+        <h2><?php echo $lang['Header1']; ?></h2>
 
      <form method="post" enctype = "multipart/form-data">
          <div class="form-group">
-           <label for="subor">Výber súboru pre ktorý sa majú vygenerovať heslá:   </label>
+           <label for="subor"><?php echo $lang['Label1']; ?></label>
             <input type="file" name="subor">
              <br>
-             <label for="odelovac">Voľba oddelovača</label>
+             <label for="odelovac"><?php echo $lang['Oddelovac']; ?></label>
              <input type="text" name="oddelovac">
              <br>
-              <input type="submit" class="btn btn-primary mb-2" value="potvrdiť" name="submit">
+              <input type="submit" class="btn btn-primary mb-2" value="<?php echo $lang['Potvrdenie1'];?>" name="submit">
+
+
         </div>
      </form>
     </div>
 
-    <div class="div2">
-        <h2>Rozposielanie hesiel mailom</h2>
+    <div class="col-sm">
+        <h2><?php echo $lang['Header2']; ?></h2>
         <form method="post">
-            <label>Id Sablony</label>
+            <label><?php echo $lang['Sablona']; ?></label>
             <input type="number" id="param" name="param"><br>
-            <input type="submit" class="btn btn-primary mb-2" value="Vybrať šablónu" name="submit3" >
+            <input type="submit" class="btn btn-primary mb-2" value="<?php echo $lang['Sablona2']; ?>" name="submit3" >
         </form>
         <form id="eemail" method="post" enctype = "multipart/form-data">
             <div class="form-group">
-                <label for="subor">Výber súboru pre ktorý sa majú rozposlať maily   </label>
+                <label for="subor"><?php echo $lang['Label2']; ?></label>
                 <input type="file" name="subor2" required>
                 <br>
-                <input type="text" name="usr" placeholder="username" required>
-                <input type="email" name="mail" placeholder="example@stuba.sk" required>
-                <input type="password" name="pass" placeholder="TajneHeslo" required><br>
+                <input type="text" name="usr" placeholder="<?php echo $lang['PlaceHolder1']; ?>" required>
+                <input type="email" name="mail" placeholder="<?php echo $lang['PlaceHolder2']; ?>" required>
+                <input type="password" name="pass" placeholder="<?php echo $lang['PlaceHolder3']; ?>" required><br>
                 <!--label>Id Sablony    </label>
                 <input type="number" id="idsablony" name="idsablony"><br-->
-                <label>Predmet spravy</label>
-                <input type="text" name="subject" placeholder="Subject of email" required><br><br>
-                <label>Attachment (optional)</label><br>
+                <label><?php echo $lang['PlaceHolder4']; ?></label>
+                <input type="text" name="subject" placeholder="<?php echo $lang['PlaceHolder5']; ?>" required><br><br>
+                <label><?php echo $lang['Priloha']; ?></label><br>
                 <input type="file" name="attachment"><br><br>
-                <input type="submit" class="btn btn-primary mb-2" value="Odoslať" name="submit2" >
-                <input type="radio" name="emailType" value="plain" checked> Plain text
-                <input type="radio" name="emailType" value="html"> HTML email<br>
+                <input type="submit" class="btn btn-primary mb-2" value="<?php echo $lang['Odoslanie']; ?>" name="submit2" >
+                <input type="radio" name="emailType" value="plain" checked> <?php echo $lang['Text1']; ?>
+                <input type="radio" name="emailType" value="html"> <?php echo $lang['Text2']; ?><br>
             </div>
 
         </form>
 
+        <textarea id="summernote" form="eemail" name="edited" > <?php if(isset($_POST['param'])){echo nacitajSablonu($_POST['param']); $_SESSION['IDS']=$_POST['param'];} ?></textarea>
+        <button onclick="show()" ><?php echo $lang['Tabulka']; ?></button>
     <!--<button id="gimmemytemplate">Upraviť šablónu</button><script>
 
         $("#gimmemytemplate").click(function(){
@@ -136,11 +141,11 @@ include 'navbar.php';
         });
 
     </script>-->
+    </div>
 </div>
-
 </div><br>
 
-    <textarea id="summernote" form="eemail" name="edited" > <?php if(isset($_POST['param'])){echo nacitajSablonu($_POST['param']); $_SESSION['IDS']=$_POST['param'];} ?></textarea>
+
    <!-- <input form="eemail" type="submit" class="btn btn-primary mb-2" value="Odoslať" name="submit2">
     <input  type="submit" class="btn btn-primary mb-2" value="Odoslať" name="submit3" >-->
 
@@ -152,7 +157,7 @@ include 'navbar.php';
         height: 200
     });
 </script>
-<button onclick="show()" >Tabulka odoslanych emailov</button>
+
 <div id="results" style="display: none"></div><br>
 <script>
     $.ajax({url: "databaseLog.php"}).done(function( msg ) {
@@ -249,7 +254,7 @@ if(isset($_FILES["subor"])){
     $novySubor = generateRandomString(5);
     $cesta = "csvSHeslami/".$novySubor.".csv";
     saveCSV($data,$cesta);
-   echo "<a href='".$cesta ."'>vystup s heslom</a>";
+   echo "<a href='".$cesta ."'>".$lang['Hesla']."</a>";
 }
 
 
