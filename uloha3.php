@@ -222,7 +222,7 @@ if(isset($_FILES["subor2"])){
 
 
 if(isset($_POST['edited'])){
-    echo "<br><br> got there yea";
+    //echo "<br><br> got there yea";
     $sablona = $_POST['edited'];
 
     foreach ($data as $x) {
@@ -235,10 +235,10 @@ if(isset($_POST['edited'])){
                 databaseLog($idsablony, $data[0], $x, $userData[3]);
             }
         } else {
-            echo "<br>xxx";
+            //echo "<br>xxx";
             if (odosliEmail((String)$x['email'], $sablonaUpravena, $userData, $flag)) {
                 databaseLog($idsablony, $data[0], $x, $userData[3]);
-                echo "<br>xxx";
+                //echo "<br>xxx";
             }
         }
     }
