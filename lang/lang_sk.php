@@ -34,6 +34,9 @@ $lang['FORM_ADMLOGIN'] = 'Prihlásiť sa ako admin';
 $lang['FORM_FILE_LABEL'] = 'CSV Súbor';
 $lang['FORM_FILE_SEPARATOR'] = 'Oddelovač v CSV Súbore';
 $lang['FORM_DBIMPORT'] = 'Vlož do databázy';
+$lang['FORM_SUBJECT'] = 'Predmet (skratka)';
+$lang['FORM_YEAR'] = 'Školský rok';
+
 //Team view
 
 $lang['TEAM_MSG'] = 'Vitajte v tímovom prehľade.';
@@ -62,3 +65,26 @@ $lang['Sablona'] = "Id šablóny";
 $lang['Sablona2'] = "Vybrať šablónu";
 $lang['Priloha'] = "Príloha (volitelné)";
 $lang['Hesla'] = "Súbor spolu s heslami";
+
+//Buttons
+$lang['B_SHOW/HIDE'] = "Ukáž/Schovaj skupiny";
+$lang['B_EXPORT'] = "Export študentov do CSV súboru";
+
+//Admin view
+$lang['ADMIN_CHANGE'] = "Ulož hodnotu";
+$lang['ADMIN_GROUP'] = "Skupina";
+$lang['ADMIN_AGREE'] = "Ukáž/Schovaj skupiny";
+$lang['ADMIN_DISAGREE'] = "Export študentov do CSV súboru";
+
+$lang['ADMIN_EMAIL'] = "Email";
+$lang['ADMIN_FULLNAME'] = "Celé meno";
+$lang['ADMIN_POINTS'] = "Body";
+$lang['ADMIN_AGREE_BTN'] = "Súhlas/Nesúhlas";
+
+//Student view
+$lang['ST_YEAR'] = "Rok";
+$lang['ST_SUBJECT'] = "Predmet";
+$lang['ST_GRPVAL'] = "Hodnotenie skupiny";
+$lang['ST_AGREE_BTN'] = "Súhlas";
+$lang['ST_DAGREE_BTN'] = "Nesúhlas";
+$lang['ST_SAVE_BTN'] = "Ulož pridelené body";

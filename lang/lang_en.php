@@ -34,6 +34,8 @@ $lang['FORM_ADMLOGIN'] = 'Login as admin';
 $lang['FORM_FILE_LABEL'] = 'CSV File';
 $lang['FORM_FILE_SEPARATOR'] = 'CSV File Separator';
 $lang['FORM_DBIMPORT'] = 'Import into DB';
+$lang['FORM_SUBJECT'] = 'Subject (shortcut)';
+$lang['FORM_YEAR'] = 'School year';
 
 //Team view
 
@@ -63,3 +65,26 @@ $lang['Sablona'] = "Id of template";
 $lang['Sablona2'] = "Select template";
 $lang['Priloha'] = "Attachment (optional)";
 $lang['Hesla'] = "File including passwords";
+
+//Buttons
+$lang['B_SHOW/HIDE'] = "Show/Hide groups";
+$lang['B_EXPORT'] = "Export students to CSV";
+
+//Admin view
+$lang['ADMIN_CHANGE'] = "Save value";
+$lang['ADMIN_GROUP'] = "Group";
+$lang['ADMIN_AGREE'] = "I agree";
+$lang['ADMIN_DISAGREE'] = "I disagree";
+
+$lang['ADMIN_EMAIL'] = "Email";
+$lang['ADMIN_FULLNAME'] = "Fullname";
+$lang['ADMIN_POINTS'] = "Points";
+$lang['ADMIN_AGREE_BTN'] = "Agree/Disagree";
+
+//Student view
+$lang['ST_YEAR'] = "Year";
+$lang['ST_SUBJECT'] = "Subject";
+$lang['ST_GRPVAL'] = "Group valuation";
+$lang['ST_AGREE_BTN'] = "Agree";
+$lang['ST_DAGREE_BTN'] = "Disagree";
+$lang['ST_SAVE_BTN'] = "Save points";

@@ -50,6 +50,7 @@ include_once 'lang/'.$lang_file;
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.es6.js" charset="UTF-8"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 </head>
 <body>
@@ -78,6 +79,55 @@ include_once 'lang/'.$lang_file;
     <div id="success"  class="mx-auto text-danger" style="width: 300px;" ></div>
     <div class="mt-5 mx-auto" style="width: 200px;" >
     </div>
+    <?php
+    include_once "config.php";
+    $dbname = "zavzadanie";
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql="SELECT subject FROM teamPoints GROUP BY subject";
+    $result = mysqli_query($conn,$sql);
+    $sql1="SELECT schoolyear FROM teamPoints GROUP BY schoolyear";
+    $result1 = mysqli_query($conn,$sql1);
+    if ($result->num_rows > 0) :
+    ?>
+    <form class="w-75 p-3 mb-5 mt-5 mx-auto shadow p-3 mb-5 bg-white rounded" id="stats" style="background-color: rgba(0,0,0,.05) !important;">
+        <h5 class="mb-3 text-center"><?php echo $lang['FORM_HEADER'];?></h5>
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="schoolyear"><?php echo $lang['FORM_SUBJECT'];?></label>
+                <select  class="custom-select mr-sm-2" name="subject" size="1" required>
+                    <?php     while($row = mysqli_fetch_array($result)) : ?>
+                    <option value="<?php echo $row['subject']?>" selected><?php echo $row['subject']?></option>
+                    <?php endwhile; ?>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="schoolyear"><?php echo $lang['FORM_YEAR'];?></label>
+                <select  class="custom-select mr-sm-2" name="schoolyear" size="1" required>
+                    <?php     while($row1 = mysqli_fetch_array($result1)) : ?>
+                        <option value="<?php echo $row1['schoolyear']?>" selected><?php echo $row1['schoolyear']?></option>
+                    <?php endwhile; ?>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col">
+                <button type="submit" id="submit" name="submit" class="btn btn-primary">Statistics</button>
+            </div>
+        </div>
+    </form>
+    <?php endif;?>
+    <div class="row">
+        <div class="col" id="graphDiv"></div>
+        <div class="col" id="graphDiv2"></div>
+    </div>
+
 </div>
 <script src="myscript.js"></script>
 

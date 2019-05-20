@@ -33,9 +33,11 @@ if(isset($_POST['login']) && isset($_POST['password'])) {
         $surname=$info[$i]['sn'][0];
         $email=$info[$i]['mail'][0];
         $login=$info[$i]['uid'][0];
+        $user_id = $info[$i]['uisid'][0];
 
         $_SESSION["loggedin"] = true;
         $_SESSION["username"] = $login;
+        $_SESSION["user_id"] = $user_id;
         $_SESSION["type"] = 'student';
 
 //        insertPrihlasenie($name,$surname,$email,$login,$hash_pass);

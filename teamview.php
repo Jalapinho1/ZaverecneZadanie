@@ -92,8 +92,15 @@ include_once 'lang/' . $lang_file;
      }else{
          include "teamStuff/student.php";
      }
-    ?>
 
+    $adminTable = $_SESSION["adminTable"];
+    if ($adminTable){
+        include "teamStuff/adminTeamView.php";
+    }
+
+    ?>
+    <div id="res"></div>
 </div>
+<script src="teamStuff/teamFunctions.js"></script>
 </body>
 </html>
