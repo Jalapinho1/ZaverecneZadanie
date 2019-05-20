@@ -227,7 +227,7 @@ if(isset($_POST['edited'])){
 
     foreach ($data as $x) {
 
-        var_dump($x);
+        //var_dump($x);
         $sablonaUpravena = pripravEmail($sablona, $data[0], $x, $userData[0]);
         if (isset($_FILES['attachment']) &&
             $_FILES['attachment']['error'] == UPLOAD_ERR_OK) {
