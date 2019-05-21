@@ -35,51 +35,20 @@ if(isset($_POST['login']) && isset($_POST['password'])) {
         $login=$info[$i]['uid'][0];
         $user_id = $info[$i]['uisid'][0];
 
+        $_SESSION["idcko"] = $user_id;
+        $_SESSION["priezvisko"] = $surname;
+
         $_SESSION["loggedin"] = true;
         $_SESSION["username"] = $login;
         $_SESSION["user_id"] = $user_id;
         $_SESSION["type"] = 'student';
+        $_SESSION["meno"] = $name;
 
-//        insertPrihlasenie($name,$surname,$email,$login,$hash_pass);
         echo "teamview.php";
     } else {
         $password_err = "The password you entered was not valid.";
         echo $password_err;
     }
-}
-
-function insertPrihlasenie($name,$surname,$email,$login,$hash_pass){
-
-    include_once "config.php";
-    $dbname = "zadanie3";
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $result = $conn->query("SELECT * FROM users WHERE login LIKE '$login'");
-    if($result->num_rows != 0) {
-        //header("Location:  http://147.175.121.210:8092/Z_3/loginpage.php");
-    } else {
-        $sql = "INSERT INTO users (name, surname,  email,login, password )
-    VALUES ('$name','$surname','$email','$login', '$hash_pass')";
-
-        if ($conn->query($sql) === TRUE) {
-            //echo "User data uploaded into database.";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-    }
-
-    $sql1="INSERT INTO loginData(login,typeOfReg) VALUES ('$login','ldap')";
-    if ($conn->query($sql1) === TRUE) {
-        echo "welcome.php";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-
-    $conn->close();
 }
 
 ?>

@@ -88,3 +88,13 @@ $lang['ST_GRPVAL'] = "Group valuation";
 $lang['ST_AGREE_BTN'] = "Agree";
 $lang['ST_DAGREE_BTN'] = "Disagree";
 $lang['ST_SAVE_BTN'] = "Save points";
+
+//Ul1
+$lang['FORM_SCHOOL_YEAR'] = 'School year';
+$lang['FORM_WARNING_CSV'] = 'Input file must be csv!';
+$lang['TEAMLBL'] = 'Remove subject';
+$lang['TEAMRMW'] = 'Remove';
+$lang['STUDNAMESUB'] = 'Name of subject: ';
+$lang['STUDNAMEYR'] = ' School year: ';
+$lang['STUDIDVAIS'] = 'ID in AIS: ';
+$lang['EX1MSG'] = 'Welcome.';

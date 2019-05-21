@@ -14,7 +14,7 @@ $getvariable = $matchFound ? trim ($_GET["lang"]) : '';
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="https://147.175.121.210:4492/zavzadanie/index.php"><?php echo $lang['MENU_1']; ?></a>
+                <a class="nav-link" href="index.php"><?php echo $lang['MENU_1']; ?></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="uloha2.php"><?php echo $lang['MENU_2']; ?></a>

@@ -29,7 +29,7 @@ include_once 'lang/'.$lang_file;
 <html lang="<?php echo $langtmp;?>">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Task 2</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <!--    <link rel="stylesheet" type="text/css" href="style.css">-->
     <meta charset="utf-8">

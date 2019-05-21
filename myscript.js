@@ -14,6 +14,23 @@ function submitForm(url){
     });
 }
 
+function submitForm1(url){
+    var data = $('#loginForm1').serialize();
+    $.ajax({
+        type : 'POST',
+        url  : url,
+        data : data,
+        success :  function(data){
+            if (data == "teamview.php"){
+                window.location.href = "teamview1.php";
+            }else{
+                $("#success").html(data);
+            }
+        }
+    });
+}
+
+
 $("#stats").submit(function(e) {
 
     e.preventDefault(); // avoid to execute the actual submit of the form.

@@ -88,3 +88,13 @@ $lang['ST_GRPVAL'] = "Hodnotenie skupiny";
 $lang['ST_AGREE_BTN'] = "Súhlas";
 $lang['ST_DAGREE_BTN'] = "Nesúhlas";
 $lang['ST_SAVE_BTN'] = "Ulož pridelené body";
+
+//Ul1
+$lang['FORM_SCHOOL_YEAR'] = 'Školský rok';
+$lang['FORM_WARNING_CSV'] = 'Súbor musí mať príponu CSV!';
+$lang['TEAMLBL'] = 'Odstránit predmet';
+$lang['TEAMRMW'] = 'Odstránit';
+$lang['STUDNAMESUB'] = 'Názov predmetu: ';
+$lang['STUDNAMEYR'] = ' Školský rok: ';
+$lang['STUDIDVAIS'] = 'ID v systéme AIS: ';
+$lang['EX1MSG'] = 'Vitajte.';

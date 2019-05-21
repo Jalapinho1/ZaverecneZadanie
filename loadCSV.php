@@ -74,10 +74,15 @@ function pridajHeslo($vstup){
 }
 
 function nacitajSablonu($idSablony){
+//    $servername = "localhost";
+//    $username = "xkocalka";
+//    $password = "VvniA3fHVkt8";
+//    $db = "prvadb";
+
     $servername = "localhost";
-    $username = "xkocalka";
-    $password = "VvniA3fHVkt8";
-    $db = "prvadb";
+    $username = "eduardom";
+    $password = "webteXmartinez97";
+    $db = "zavzadanie";
     $port = 8158;
 
     $conn = mysqli_connect($servername, $username, $password, $db, $port);
@@ -114,10 +119,15 @@ function pripravEmail($sablona,$hlavicka,$student, $sender){
 }
 
 function databaseLog($idsablony=0 ,$hlavicka,$student, $subject){
+//    $servername = "localhost";
+//    $username = "xkocalka";
+//    $password = "VvniA3fHVkt8";
+//    $db = "prvadb";
+
     $servername = "localhost";
-    $username = "xkocalka";
-    $password = "VvniA3fHVkt8";
-    $db = "prvadb";
+    $username = "eduardom";
+    $password = "webteXmartinez97";
+    $db = 'zavzadanie';
     $port = 8158;
 
     $conn = mysqli_connect($servername, $username, $password, $db, $port);
