@@ -103,8 +103,10 @@ $lang['STUDNAMEYR'] = ' Školský rok: ';
 $lang['STUDIDVAIS'] = 'ID v systéme AIS: ';
 $lang['EX1MSG'] = 'Vitajte.';
 
-//Table
+//Mainpage
 $lang['TASK_1'] = 'Úloha 1';
 $lang['TASK_2'] = 'Úloha 2';
 $lang['TASK_3'] = 'Úloha 3';
 $lang['T_HEAD']  = 'Tabuľka rozdelenia úloh';
+$lang['T_Link']  = 'Technická dokumentácia';
+

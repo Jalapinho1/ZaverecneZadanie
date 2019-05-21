@@ -103,8 +103,9 @@ $lang['STUDNAMEYR'] = ' School year: ';
 $lang['STUDIDVAIS'] = 'ID in AIS: ';
 $lang['EX1MSG'] = 'Welcome.';
 
-//Table
+//Mainpage
 $lang['TASK_1'] = 'Task 1';
 $lang['TASK_2'] = 'Task 2';
 $lang['TASK_3'] = 'Task 3';
 $lang['T_HEAD']  = 'Task division table';
+$lang['T_Link']  = 'Technical documentation';

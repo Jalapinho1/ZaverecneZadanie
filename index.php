@@ -100,6 +100,9 @@ include_once 'lang/'.$lang_file;
             </tr>
         </tbody>
     </table>
+    <div class="row ml-2 mt-5 mb-5" >
+        <a href="Technicka_dokumentacia.pdf"><?php echo $lang['T_Link'];?></a>
+    </div>
 </div>
 <script src="myscript.js"></script>
 </body>
