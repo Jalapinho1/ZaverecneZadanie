@@ -72,9 +72,9 @@ while($row = mysqli_fetch_array($result)) :?>
         <?php
         if ($input){
             if ($agreed){
-                echo "You agreed with the students divided points";
+                echo $lang['ADMIN_ADM_AGR'] ;
             }else if ($disagreed){
-                echo "You disagreed with the students divided points";
+                echo $lang['ADMIN_ADM_DSGR'] ;
             }
         }
         ?>

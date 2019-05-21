@@ -21,6 +21,6 @@ unset($_SESSION["type"]);
 
 // Redirect to login page
 
-header("location: uloha1.php");
+header("location: ../uloha1.php");
 exit;
 ?>

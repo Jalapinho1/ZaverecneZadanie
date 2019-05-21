@@ -23,7 +23,7 @@ if (!empty($subject) && !empty($year)){
              AND subject LIKE '".strval($subject)."' AND schoolyear LIKE '".strval($year)."'";
 
         if ($conn->query($sql2) === TRUE) {
-            echo "Points updated in database.";
+            echo "✓";
         } else {
             echo "Error: " . $sql2 . "<br>" . $conn->error;
         }

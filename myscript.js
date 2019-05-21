@@ -15,7 +15,7 @@ function submitForm(url){
 }
 
 function submitForm1(url){
-    var data = $('#loginForm1').serialize();
+    var data = $('#loginForm').serialize();
     $.ajax({
         type : 'POST',
         url  : url,

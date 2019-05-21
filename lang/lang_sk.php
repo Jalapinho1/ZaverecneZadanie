@@ -80,6 +80,8 @@ $lang['ADMIN_EMAIL'] = "Email";
 $lang['ADMIN_FULLNAME'] = "Celé meno";
 $lang['ADMIN_POINTS'] = "Body";
 $lang['ADMIN_AGREE_BTN'] = "Súhlas/Nesúhlas";
+$lang['ADMIN_ADM_DSGR'] = "Nesúhlasíte s rozdelením bodov.";
+$lang['ADMIN_ADM_AGR'] = "Súhlasíte s rozdelením bodov.";
 
 //Student view
 $lang['ST_YEAR'] = "Rok";
@@ -88,6 +90,8 @@ $lang['ST_GRPVAL'] = "Hodnotenie skupiny";
 $lang['ST_AGREE_BTN'] = "Súhlas";
 $lang['ST_DAGREE_BTN'] = "Nesúhlas";
 $lang['ST_SAVE_BTN'] = "Ulož pridelené body";
+$lang['ST_ADM_DSGR'] = "Admin nesúhlasí s rozdelením bodov.";
+$lang['ST_ADM_AGR'] = "Admin súhlasí s rozdelením bodov.";
 
 //Ul1
 $lang['FORM_SCHOOL_YEAR'] = 'Školský rok';
@@ -98,3 +102,9 @@ $lang['STUDNAMESUB'] = 'Názov predmetu: ';
 $lang['STUDNAMEYR'] = ' Školský rok: ';
 $lang['STUDIDVAIS'] = 'ID v systéme AIS: ';
 $lang['EX1MSG'] = 'Vitajte.';
+
+//Table
+$lang['TASK_1'] = 'Úloha 1';
+$lang['TASK_2'] = 'Úloha 2';
+$lang['TASK_3'] = 'Úloha 3';
+$lang['T_HEAD']  = 'Tabuľka rozdelenia úloh';

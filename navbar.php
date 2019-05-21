@@ -7,14 +7,14 @@ $getvariable = $matchFound ? trim ($_GET["lang"]) : '';
 
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="index.php"><?php echo $lang['MENU_HOME']; ?></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="index.php"><?php echo $lang['MENU_1']; ?></a>
+                <a class="nav-link" href="uloha1.php"><?php echo $lang['MENU_1']; ?></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="uloha2.php"><?php echo $lang['MENU_2']; ?></a>

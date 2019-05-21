@@ -80,6 +80,8 @@ $lang['ADMIN_EMAIL'] = "Email";
 $lang['ADMIN_FULLNAME'] = "Fullname";
 $lang['ADMIN_POINTS'] = "Points";
 $lang['ADMIN_AGREE_BTN'] = "Agree/Disagree";
+$lang['ADMIN_ADM_DSGR'] = "You disagreed with the students divided points";
+$lang['ADMIN_ADM_AGR'] = "You agreed with the students divided points";
 
 //Student view
 $lang['ST_YEAR'] = "Year";
@@ -88,6 +90,8 @@ $lang['ST_GRPVAL'] = "Group valuation";
 $lang['ST_AGREE_BTN'] = "Agree";
 $lang['ST_DAGREE_BTN'] = "Disagree";
 $lang['ST_SAVE_BTN'] = "Save points";
+$lang['ST_ADM_DSGR'] = "Admin disagreed with the students divided points";
+$lang['ST_ADM_AGR'] = "Admin agreed with the students divided points";
 
 //Ul1
 $lang['FORM_SCHOOL_YEAR'] = 'School year';
@@ -98,3 +102,9 @@ $lang['STUDNAMESUB'] = 'Name of subject: ';
 $lang['STUDNAMEYR'] = ' School year: ';
 $lang['STUDIDVAIS'] = 'ID in AIS: ';
 $lang['EX1MSG'] = 'Welcome.';
+
+//Table
+$lang['TASK_1'] = 'Task 1';
+$lang['TASK_2'] = 'Task 2';
+$lang['TASK_3'] = 'Task 3';
+$lang['T_HEAD']  = 'Task division table';

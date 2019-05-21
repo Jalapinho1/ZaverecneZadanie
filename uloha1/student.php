@@ -18,13 +18,14 @@
     <p><?php echo $meno. " ". $priezvisko ?></p>
     <p><?php echo $lang['STUDIDVAIS'].$id ?></p>
 </h2>
-<a href="logout.php" class="btn btn-danger mt-2 pull-right" style="position: absolute; top: 5px; right: 5px;"><?php echo $lang['TEAM_LOGOUT'];?></a>
+<a href="uloha1/logout.php" class="btn btn-danger mt-2 pull-right" style="position: absolute; top: 5px; right: 5px;"><?php echo $lang['TEAM_LOGOUT'];?></a>
 
     <br><br>
 <?php
 $servername = "localhost";
 $username = "eduardom";
 $password = "webteXmartinez97";
+$dbname = "zavzadanie";
 $connect = mysqli_connect($servername, $username, $password, $dbname);
 
 if (mysqli_connect_errno()) {

@@ -107,7 +107,6 @@ include_once 'lang/' . $lang_file;
         exit();
     }
 
-
     if(isset($_POST["uploadFile"])) {
 
         if($_FILES['csvInput']['name']) {
@@ -158,16 +157,10 @@ include_once 'lang/' . $lang_file;
     </form>
     <br>';
     }
-
     if(isset($_POST["delete"])) {
         $subjname= $_POST["subjectDelete"];
-
-
         deleteSub($subjname,$connect);
-
     }
-
-
     ?>
 </div>
 </body>

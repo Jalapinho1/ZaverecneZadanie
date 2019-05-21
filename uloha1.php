@@ -12,6 +12,7 @@ if(isSet($_GET['lang'])) {
     $lang = 'sk';
 }
 $langtmp = $lang;
+
 switch ($lang) {
     case 'en':
         $lang_file = 'lang_en.php';
@@ -49,58 +50,36 @@ include_once 'lang/'.$lang_file;
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.es6.js" charset="UTF-8"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
 
 </head>
 <body>
 <?php include 'navbar.php' ?>
-<div class="undernavimg">
-    <img id="headerimg" src="img/bcg2.png" alt="Nature" style="width: 100%;">
-</div>
 <div class="container">
-    <div class="row mt-5 mb-5">
-        <div class="col text-center">
-            <h2><?php echo $lang['HEADING'] ;?></h2>
+    <form class="w-75 p-3 mb-5 mt-5 mx-auto shadow p-3 mb-5 bg-white rounded" id="loginForm" style="background-color: rgba(0,0,0,.05) !important;">
+        <h5 class="mb-3 text-center"><?php echo $lang['FORM_HEADER'];?></h5>
+        <div class="form-row">
+            <div class="form-group col">
+                <input type="text" name="login" class="form-control" placeholder="<?php echo $lang['FORM_NAME'];?>" required>
+            </div>
         </div>
+        <div class="form-row">
+            <div class="form-group col">
+                <input type="password" name="password" class="form-control" placeholder="<?php echo $lang['FORM_PASSW'];?>" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col">
+                <button type="button" class="btn btn-primary" onclick="submitForm1('ldaplogin.php')"><?php echo $lang['FORM_LOGIN'];?></button>
+                <button type="button" class="btn btn-primary" onclick="submitForm1('loginadmin.php')"><?php echo $lang['FORM_ADMLOGIN'];?></button>
+            </div>
+        </div>
+    </form>
+    <div id="success"  class="mx-auto text-danger" style="width: 300px;" ></div>
+    <div class="mt-5 mx-auto" style="width: 200px;" >
     </div>
-    <table class="table table-bordered table-striped mt-5 table-hover shadow-lg p-3 mb-5 bg-white rounded dataTable no-footer">
-        <thead>
-        <tr><td class="text-center font-weight-bold" colspan="4 "><?php echo $lang['T_HEAD'] ;?></td></tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th></th>
-                <th><?php echo $lang['TASK_1'] ;?></th>
-                <th><?php echo $lang['TASK_2'] ;?></th>
-                <th><?php echo $lang['TASK_3'] ;?></th>
-            </tr>
-            <tr>
-                <th>Eduardo Martinez</th>
-                <td>x</td>
-                <td>✓</td>
-                <td>x</td>
-            </tr>
-            <tr>
-                <th>Erik Lampert</th>
-                <td>✓</td>
-                <td>x</td>
-                <td>x</td>
-            </tr>
-            <tr>
-                <th>Martin Muller</th>
-                <td>x</td>
-                <td>x</td>
-                <td>✓</td>
-            </tr>
-            <tr>
-                <th>Peter Kocalka</th>
-                <td>x</td>
-                <td>x</td>
-                <td>✓</td>
-            </tr>
-        </tbody>
-    </table>
 </div>
 <script src="myscript.js"></script>
+
 </body>
 </html>
